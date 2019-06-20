@@ -36,7 +36,9 @@ public UserDaoImpl(NamedParameterJdbcTemplate template) {
 		final String sql = "insert into users(UserId, UserFirstname, UserLastname , UserCity, UserEmail) values(:UserId,:UserFirstname,:UserEmail,:UserCity)";
 		KeyHolder holder = new GeneratedKeyHolder();
 		SqlParameterSource param = new MapSqlParameterSource().addValue("UserId", emp.getUserId())
-				.addValue("UserFirstname", emp.getUserFirstname()).addValue("UserLastname", emp.getUserLastname()).addValue("UserEmail", emp.getUserEmail())
+				.addValue("UserFirstname", emp.getUserFirstname())
+				.addValue("UserLastname", emp.getUserLastname())
+				.addValue("UserEmail", emp.getUserEmail())
 				.addValue("UserCity", emp.getUserCity());
 		template.update(sql, param, holder);
 	}
